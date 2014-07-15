@@ -27,8 +27,7 @@
  *  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  *  OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- *  ************************************************************************************ */
-
+ *  ************************************************************************************ */ 
 
 #pragma once
 #include"BigInt.h"
@@ -37,34 +36,34 @@ class Rsa
 public:
 	Rsa();
 	~Rsa();
-	void init(unsigned int n);//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë½Ô¿ï¿½ï¿½
+	void init(unsigned int n);//³õÊ¼»¯£¬²úÉú¹«Ë½Ô¿¶Ô
 
 	friend void test();
 public:
-	BigInt encryptByPu(const BigInt& m);//Ë½Ô¿ï¿½ï¿½ï¿½ï¿½
-	BigInt decodeByPr(const BigInt& c);//ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½
+	BigInt encryptByPu(const BigInt& m);//Ë½Ô¿¼ÓÃÜ
+	BigInt decodeByPr(const BigInt& c);//¹«Ô¿½âÃÜ
 
-	BigInt encryptByPr(const BigInt& m);//ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½
-	BigInt decodeByPu(const BigInt& m);//Ë½Ô¿ï¿½ï¿½ï¿½ï¿½
+	BigInt encryptByPr(const BigInt& m);//¹«Ô¿¼ÓÃÜ
+	BigInt decodeByPu(const BigInt& m);//Ë½Ô¿½âÃÜ
 
 	// @begin-------------add by leslie @2014/07/08
 	bool   readPrivateKey(const string& file);
 	bool   readPublicKey(const string& file);
 	bool   islegal(const string& str)
-	{//ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ï·ï¿½
+	{//ÅÐ¶ÏÊäÈëÊÇ·ñºÏ·¨
 		for (string::const_iterator it = str.begin(); it != str.end(); ++it)
-			if (!isalnum(*it))//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½
+			if (!isalnum(*it))//²»ÊÇ×ÖÄ¸Êý×Ö
 				return false;
 		return true;
 	}
 	// @end--------------add by leslie @2014/07/08
 private:
-	BigInt createOddNum(unsigned int n);//ï¿½ï¿½ï¿½É³ï¿½ï¿½ï¿½Îªnï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	bool isPrime(const BigInt& a,const unsigned int k);//ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½
-	BigInt createPrime(unsigned int n,int it_cout);//ï¿½ï¿½ï¿½É³ï¿½ï¿½ï¿½Îªnï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	void createExp(const BigInt& ou);//ï¿½ï¿½Ò»ï¿½ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½Ô¿ï¿½ï¿½Ë½Ô¿Ö¸ï¿½ï¿½
-	BigInt createRandomSmallThan(const BigInt& a);//ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½
-	friend ostream& operator <<(ostream& out,const Rsa& rsa)//ï¿½ï¿½ï¿½ï¿½
+	BigInt createOddNum(unsigned int n);//Éú³É³¤¶ÈÎªnµÄÆæÊý
+	bool isPrime(const BigInt& a,const unsigned int k);//ÅÐ¶ÏËØÊý
+	BigInt createPrime(unsigned int n,int it_cout);//Éú³É³¤¶ÈÎªnµÄËØÊý
+	void createExp(const BigInt& ou);//´ÓÒ»¸öÅ·À­ÊýÖÐÉú³É¹«Ô¿¡¢Ë½Ô¿Ö¸Êý
+	BigInt createRandomSmallThan(const BigInt& a);//´´½¨Ð¡Êý
+	friend ostream& operator <<(ostream& out,const Rsa& rsa)//Êä³ö
 	{
 		out<<"N:"<<rsa.N<<"\n";
 		out<<"p:"<<rsa._p<<"\n";
@@ -80,9 +79,9 @@ private:
 		return in;
 	}
 public:
-	BigInt e,N;//ï¿½ï¿½Ô¿
+	BigInt e,N;//¹«Ô¿
 private:
 	BigInt _d;//Ë½Ô¿
 	BigInt _p,_q;//
-	BigInt _ol;//Å·ï¿½ï¿½ï¿½ï¿½
+	BigInt _ol;//Å·À­Êý
 };
